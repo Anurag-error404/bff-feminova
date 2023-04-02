@@ -29,6 +29,12 @@ class _PeriodStoryState extends State<PeriodStory> {
     });
   }
 
+  @override
+  void initState() {
+    inputData();
+    super.initState();
+  }
+
   createPS() {
     DocumentReference documentReference =
         firestore.collection("users_app").doc(userUid).collection("my_ps").doc();
@@ -59,6 +65,9 @@ class _PeriodStoryState extends State<PeriodStory> {
         "story": _story.text.trim().toString(),
       });
     });
+
+    Navigator.pop(context);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Story Posted Sucessfully")));
   }
 
   Widget _customTextField({
@@ -120,9 +129,11 @@ class _PeriodStoryState extends State<PeriodStory> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   verticalSpaceSmall,
-                  IconButton(onPressed: (){
-                    Navigator.pop(context);
-                  }, icon: Icon(Icons.chevron_left)),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(Icons.chevron_left)),
                   verticalSpaceSmall,
                   const Text(
                     "Share your PERIOD Story with others",
@@ -148,7 +159,11 @@ class _PeriodStoryState extends State<PeriodStory> {
                   const Text("Story Details"),
                   _customTextField(
                       label: "Story Details", textEditingController: _story, maxLines: 10),
-                      MaterialButton(onPressed: createPS, child: Text("Post Story"),color: AppColor.accentMain,)
+                  MaterialButton(
+                    onPressed: createPS,
+                    child: Text("Post Story"),
+                    color: AppColor.accentMain,
+                  )
                 ]),
           ),
         ),

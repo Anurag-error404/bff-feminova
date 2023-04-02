@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:feminova/data/model/products_list.dart';
 import 'package:feminova/data/repo/get_products.dart';
 import 'package:feminova/views/calender_screen.dart';
+import 'package:feminova/views/ps_cal_util.dart';
+import 'package:feminova/views/ps_schedule.dart';
 import 'package:feminova/widgets/carousal.dart';
 import 'package:feminova/widgets/user_profile.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    psReminderEvent();
     getAllListedProducts();
     super.initState();
   }
@@ -59,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       onPressed: () {
                         Navigator.push(
-                            context, MaterialPageRoute(builder: (_) => const CalendarScreen()));
+                            context, MaterialPageRoute(builder: (_) => const PSSchedule()));
                       },
                       icon: const Icon(
                         Icons.calendar_month,
@@ -102,7 +105,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) =>const PSStoryScreen()));
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (_) => const PSStoryScreen()));
                     },
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(curve15),
@@ -117,44 +121,78 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              const Text("Trending"),
-              _itemsList != null
-                  ? GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 9,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: 1,
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 5,
-                        crossAxisSpacing: 5,
-                      ),
-                      itemBuilder: (context, index) {
-                        return Container(
-                          height: 100,
-                          width: 100,
-                          child: Column(
-                            children: [
-                              Image.network(
-                                _itemsList!.product[index].image,
-                                height: 80,
-                              ),
-                              Text(_itemsList!.product[index].name),
-                            ],
-                          ),
-                        );
-                      },
-                    )
-                  : SizedBox.shrink(),
+              verticalSpaceSmall,
               Row(
                 children: [
-                  Container(
-                    height: 150,
-                    width: 120,
-                    color: Colors.amber,
+                  horizontalSpaceMedium,
+                  const Text(
+                    "Trending Today...",
+                    style: TextStyle(color: Colors.grey, fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
+              verticalSpaceSmall,
+              _itemsList != null
+                  ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: 9,
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 1.1,
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 5,
+                          crossAxisSpacing: 5,
+                        ),
+                        itemBuilder: (context, index) {
+                          return Container(
+                            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [BoxShadow(blurRadius: 3, color: Colors.black12)]),
+                            height: 150,
+                            width: 150,
+                            child: Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(5),
+                                  child: Image.network(
+                                    _itemsList!.product[index].image,
+                                    height: 80,
+                                    width: 150,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                verticalSpaceTiny,
+                                Text(_itemsList!.product[index].name, maxLines: 1,),
+                                verticalSpaceTiny_0,
+                                Text(
+                                  "${_itemsList!.product[index].price} Rs",
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    )
+                  : SizedBox.shrink(),
+                  SizedBox(height: 50,),
+              // Row(
+              //   children: [
+              //     Container(
+              //       height: 150,
+              //       width: 120,
+              //       color: Colors.amber,
+              //     ),
+              //   ],
+              // ),
             ],
           ),
         ),

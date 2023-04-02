@@ -12,7 +12,7 @@ class PSStoryScreen extends StatefulWidget {
 }
 
 class _PSStoryScreenState extends State<PSStoryScreen> {
-  var stream = FirebaseFirestore.instance.collection('discover_team');
+  var stream = FirebaseFirestore.instance.collection('ps_story');
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +44,7 @@ class _PSStoryScreenState extends State<PSStoryScreen> {
                   }
 
                   List<QueryDocumentSnapshot<Map<String, dynamic>?>> psData = snapshot.data!.docs;
+                  
                   if (psData.isNotEmpty) {
                     return ListView.builder(
                       shrinkWrap: true,
@@ -71,6 +72,18 @@ class PSStoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: AppColor.accentMain.withOpacity(0.2),
+      ),
+      child: Column(children: [
+        Text(ps.isAnonymous! ? "by Unknown" : "by ${ps.name}"),
+        Divider(),
+        Text(ps.story!),
+      ],),
+    );
   }
 }

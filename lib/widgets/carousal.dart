@@ -5,7 +5,8 @@ class AppCarousalSlider extends StatelessWidget {
   final double? height;
   final List<Widget>? carouselItems;
   final double? aspectRatio;
-  const AppCarousalSlider({super.key, this.height, this.carouselItems, this.aspectRatio});
+  final bool? isCenterBig;
+  const AppCarousalSlider({super.key, this.height, this.carouselItems, this.aspectRatio, this.isCenterBig});
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +32,8 @@ class AppCarousalSlider extends StatelessWidget {
         height: height ?? 200,
         pageSnapping: true,
         autoPlay: true,
-        aspectRatio: aspectRatio?? 1.5,
-        enlargeCenterPage: true,
+        aspectRatio: aspectRatio ?? 1.5,
+        enlargeCenterPage: isCenterBig ?? true,
       ),
       items: carouselItems ?? testItems,
     );

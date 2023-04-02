@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:feminova/app/colors.dart';
 import 'package:feminova/views/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: AppColor.accentMain,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +66,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                     'An email has been sent to ${user!.email} please verify to continue.',
                     textAlign: TextAlign.center,
                     style:
-                        const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
+                        const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                 ],
               ),

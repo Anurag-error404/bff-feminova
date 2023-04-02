@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
       // onGenerateRoute: RouteGenerator.generateRoute,
       // initialRoute: Routes.landing,
       theme: ThemeData(),
-      home: const BottomNavigationScreen(),
-      // home: const LandingPage(),
+      // home: const BottomNavigationScreen(),
+      home: const LandingPage(),
       themeMode: ThemeMode.light,
     );
   }

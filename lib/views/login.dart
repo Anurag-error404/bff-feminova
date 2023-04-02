@@ -1,5 +1,6 @@
 import 'package:feminova/app/app_constants.dart';
 import 'package:feminova/app/colors.dart';
+import 'package:feminova/app/femenova_constant.dart';
 import 'package:feminova/utils/size_config.dart';
 import 'package:feminova/views/bottom_navigation_screen.dart';
 import 'package:feminova/views/signup.dart';
@@ -37,24 +38,25 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: AppColor.accentMain,
       body: SafeArea(
           child: SingleChildScrollView(
-
-            child: Form(
-              key: _formKey,
-              child: Column(
-                    children: [
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
               verticalSpaceSmall,
               ClipRRect(
                 clipBehavior: Clip.hardEdge,
                 borderRadius: BorderRadius.circular(curve15),
-                      
                 child: Container(
-                  height: SizeConfig.screenHeight*0.45,
+                  height: SizeConfig.screenHeight * 0.45,
                   // width: double.infinity,
                   margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(curve15),
-                    image: DecorationImage(image: AssetImage("assets/img5.png",), fit: BoxFit.cover)
-                    ),
+                      borderRadius: BorderRadius.circular(curve15),
+                      image: DecorationImage(
+                          image: AssetImage(
+                            "assets/img5.png",
+                          ),
+                          fit: BoxFit.cover)),
                   // child: Image.asset("assets/img5.png", fit: BoxFit.cover,),
                 ),
               ),
@@ -65,7 +67,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(
                   width: SizeConfig.screenWidth * 0.8,
                   decoration: BoxDecoration(
-                      color: Theme.of(context).canvasColor, borderRadius: BorderRadius.circular(20)),
+                      color: Theme.of(context).canvasColor,
+                      borderRadius: BorderRadius.circular(20)),
                   child: TextFormField(
                     onChanged: (value) {
                       setState(() {
@@ -76,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Colors.black,
                     ),
                     cursorColor: Colors.red,
-                      
+
                     onSaved: (value) {
                       // userMail = value;
                     },
@@ -93,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       prefixIcon: const IconButton(
                         icon: Icon(
                           Icons.mail,
-                          color:AppColor.accentMain,
+                          color: AppColor.accentMain,
                         ),
                         onPressed: (null),
                       ),
@@ -111,7 +114,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(
                   width: SizeConfig.screenWidth * 0.8,
                   decoration: BoxDecoration(
-                      color: Theme.of(context).canvasColor, borderRadius: BorderRadius.circular(20)),
+                      color: Theme.of(context).canvasColor,
+                      borderRadius: BorderRadius.circular(20)),
                   child: TextFormField(
                     onChanged: (value) {
                       setState(() {
@@ -160,8 +164,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Container(
                 width: SizeConfig.screenWidth * 0.8,
-                decoration:
-                    BoxDecoration(color: Color.fromARGB(255, 234, 102, 104), borderRadius: BorderRadius.circular(20)),
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 234, 102, 104),
+                    borderRadius: BorderRadius.circular(20)),
                 child: TextButton(
                   child: const Text(
                     'Login',
@@ -219,10 +224,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
               ),
-                    ],
-                  ),
-            ),
-          )),
+            ],
+          ),
+        ),
+      )),
     );
   }
 
@@ -235,6 +240,9 @@ class _LoginScreenState extends State<LoginScreen> {
             (await auth.signInWithEmailAndPassword(email: _email!, password: _password!)).user;
 
         if (user!.uid.isNotEmpty) {
+          setState(() {
+            Femenova.userId = user.uid;
+          });
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const BottomNavigationScreen()),
           );
@@ -244,8 +252,8 @@ class _LoginScreenState extends State<LoginScreen> {
           setState(() {
             loginFail = true;
             print('sign in failed!');
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text("Failed to login. Please try again later")));
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Failed to login. Please try again later")));
           });
         }
       } catch (e) {
@@ -261,8 +269,8 @@ class _LoginScreenState extends State<LoginScreen> {
           ScaffoldMessenger.of(context)
               .showSnackBar(const SnackBar(content: Text("Password Entered is incorrect")));
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text("Some Unexpected Error occured please try again later.")));
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text("Some Unexpected Error occured please try again later.")));
         }
         // print(e.toString());
       }
