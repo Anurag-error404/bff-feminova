@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "309769085223",
+    "project_id": "feminova",
+    "storage_bucket": "feminova.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309769085223:android:3377e10f0ca0a5510a4902",
+        "android_client_info": {
+          "package_name": "com.example.feminova"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309769085223-e1sc1l3tof81rlgcb0sqv77drni5ve6a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaqj12IB9YWDQDmyMLmN15fqBiVbpN6ts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309769085223-e1sc1l3tof81rlgcb0sqv77drni5ve6a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
