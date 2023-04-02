@@ -58,15 +58,15 @@ All of the above features have been thoroughly tested and verified to be functio
 - Test collaboration with coffee shops and restaurants for access to washrooms and menstrual products.
 
 ## TECHNOLOGIES USED
-Flutter: a UI toolkit used to develop natively compiled applications for mobile, web, and desktop from a single codebase.
-Firebase: a mobile and web application development platform that provides backend services, including authentication, real-time databases, and hosting.
-Socket.io: a library used for real-time communication between the server and the client.
-Node.js: a JavaScript runtime environment used to run server-side code in the project and manage dependencies.
-Express: a web application framework used to build the server-side of the project, handle HTTP requests, and define routes.
-MongoDB: a document-based NoSQL database used to store and manage data in the project.
-Cloudinary: a cloud-based image and video management platform used to store and optimize media files.
-AWS: a cloud-based platform used for hosting, storage, and computing resources.
-JSON: a lightweight data format used for storing and exchanging data.
+- Flutter: a UI toolkit used to develop natively compiled applications for mobile, web, and desktop from a single codebase.
+- Firebase: a mobile and web application development platform that provides backend services, including authentication, real-time databases, and hosting.
+- Socket.io: a library used for real-time communication between the server and the client.
+- Node.js: a JavaScript runtime environment used to run server-side code in the project and manage dependencies.
+- Express: a web application framework used to build the server-side of the project, handle HTTP requests, and define routes.
+- MongoDB: a document-based NoSQL database used to store and manage data in the project.
+- Cloudinary: a cloud-based image and video management platform used to store and optimize media files.
+- AWS: a cloud-based platform used for hosting, storage, and computing resources.
+- JSON: a lightweight data format used for storing and exchanging data.
 
 ## CONTRIBUTION
 
